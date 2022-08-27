@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         setViewElements()
         lemonImage!!.setOnClickListener {
             // TODO: call the method that handles the state when the image is clicked
+            setViewElements()
         }
         lemonImage!!.setOnLongClickListener {
             // TODO: replace 'false' with a call to the function that shows the squeeze count
@@ -126,6 +127,13 @@ class MainActivity : AppCompatActivity() {
         // TODO: Additionally, for each state, the lemonImage should be set to the corresponding
         //  drawable from the drawable resources. The drawables have the same names as the strings
         //  but remember that they are drawables, not strings.
+
+        if(lemonadeState.equals(this.SELECT)){
+            textAction.text = getString(R.string.lemon_select)
+        }
+        else if(this.lemonadeState.equals(this.SQUEEZE)){
+            textAction.text = getString(R.string.lemon_squeeze)
+        }
     }
 
     /**
