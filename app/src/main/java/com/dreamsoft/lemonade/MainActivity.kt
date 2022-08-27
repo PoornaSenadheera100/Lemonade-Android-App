@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
             this.lemonadeState = this.RESTART
             this.lemonSize = -1
         }
-        else {
+        else if(lemonadeState.equals(this.RESTART)) {
             this.lemonadeState = this.SELECT
         }
     }
@@ -150,13 +150,20 @@ class MainActivity : AppCompatActivity() {
         //  but remember that they are drawables, not strings.
 
         if(lemonadeState.equals(this.SELECT)) {
-            this.lemonadeState = this.SQUEEZE
-            this.lemonSize = this.lemonTree.pick()
-            this.squeezeCount = 0
+            textAction.text = getString(R.string.lemon_select)
+            this.lemonImage?.setImageResource(R.drawable.lemon_tree)
         }
-        else if(lemonadeState.equals(this.SQUEEZE)){
+        else if(lemonadeState.equals(this.SQUEEZE)) {
             textAction.text = getString(R.string.lemon_squeeze)
             this.lemonImage?.setImageResource(R.drawable.lemon_squeeze)
+        }
+        else if(lemonadeState.equals(this.DRINK)) {
+            textAction.text = getString(R.string.lemon_drink)
+            this.lemonImage?.setImageResource(R.drawable.lemon_drink)
+        }
+        else if(lemonadeState.equals(this.RESTART)) {
+            textAction.text = getString(R.string.lemon_empty_glass)
+            this.lemonImage?.setImageResource(R.drawable.lemon_restart)
         }
     }
 
