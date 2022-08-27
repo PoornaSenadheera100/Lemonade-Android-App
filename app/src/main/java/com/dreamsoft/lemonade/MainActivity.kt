@@ -67,12 +67,12 @@ class MainActivity : AppCompatActivity() {
         setViewElements()
         lemonImage!!.setOnClickListener {
             // TODO: call the method that handles the state when the image is clicked
-
+            clickLemonImage()
             setViewElements()
         }
         lemonImage!!.setOnLongClickListener {
             // TODO: replace 'false' with a call to the function that shows the squeeze count
-            false
+            showSnackbar()
         }
     }
 
@@ -113,6 +113,26 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: lastly, before the function terminates we need to set the view elements so that the
         //  UI can reflect the correct state
+
+        if(lemonadeState.equals(this.SELECT)) {
+            this.lemonadeState = this.SQUEEZE
+            this.lemonSize = this.lemonTree.pick()
+            this.squeezeCount = 0
+        }
+        else if(lemonadeState.equals(this.SQUEEZE)){
+            this.squeezeCount++
+            this.lemonSize--
+            if(this.lemonSize == 0){
+                this.lemonadeState = this.DRINK
+            }
+        }
+        else if(lemonadeState.equals(this.DRINK)) {
+            this.lemonadeState = this.RESTART
+            this.lemonSize = -1
+        }
+        else {
+            this.lemonadeState = this.SELECT
+        }
     }
 
     /**
@@ -131,6 +151,8 @@ class MainActivity : AppCompatActivity() {
 
         if(lemonadeState.equals(this.SELECT)) {
             this.lemonadeState = this.SQUEEZE
+            this.lemonSize = this.lemonTree.pick()
+            this.squeezeCount = 0
         }
         else if(lemonadeState.equals(this.SQUEEZE)){
             textAction.text = getString(R.string.lemon_squeeze)
