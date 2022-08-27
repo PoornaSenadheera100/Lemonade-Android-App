@@ -129,10 +129,10 @@ class MainActivity : AppCompatActivity() {
         //  but remember that they are drawables, not strings.
 
         if(lemonadeState.equals(this.SELECT)){
-            textAction.text = R.string.lemon_select.toString()
+            textAction.text = getString(R.string.lemon_select)
         }
         else if(this.lemonadeState.equals(this.SQUEEZE)){
-            textAction.text = R.string.lemon_squeeze.toString()
+            textAction.text = getString(R.string.lemon_squeeze)
         }
     }
 
