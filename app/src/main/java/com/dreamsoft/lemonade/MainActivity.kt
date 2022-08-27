@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         setViewElements()
         lemonImage!!.setOnClickListener {
             // TODO: call the method that handles the state when the image is clicked
+
             setViewElements()
         }
         lemonImage!!.setOnLongClickListener {
@@ -128,11 +129,12 @@ class MainActivity : AppCompatActivity() {
         //  drawable from the drawable resources. The drawables have the same names as the strings
         //  but remember that they are drawables, not strings.
 
-        if(lemonadeState.equals(this.SELECT)){
-            textAction.text = getString(R.string.lemon_select)
+        if(lemonadeState.equals(this.SELECT)) {
+            this.lemonadeState = this.SQUEEZE
         }
-        else if(this.lemonadeState.equals(this.SQUEEZE)){
+        else if(lemonadeState.equals(this.SQUEEZE)){
             textAction.text = getString(R.string.lemon_squeeze)
+            this.lemonImage?.setImageResource(R.drawable.lemon_squeeze)
         }
     }
 
