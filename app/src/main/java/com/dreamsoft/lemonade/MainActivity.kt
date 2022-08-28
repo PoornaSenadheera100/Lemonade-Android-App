@@ -115,23 +115,23 @@ class MainActivity : AppCompatActivity() {
         //  UI can reflect the correct state
 
         if(lemonadeState.equals(this.SELECT)) {
-            this.lemonadeState = this.SQUEEZE
-            this.lemonSize = this.lemonTree.pick()
-            this.squeezeCount = 0
+            lemonadeState = SQUEEZE
+            lemonSize = lemonTree.pick()
+            squeezeCount = 0
         }
-        else if(lemonadeState.equals(this.SQUEEZE)){
-            this.squeezeCount++
-            this.lemonSize--
-            if(this.lemonSize == 0){
-                this.lemonadeState = this.DRINK
+        else if(lemonadeState.equals(SQUEEZE)){
+            squeezeCount++
+            lemonSize--
+            if(lemonSize == 0){
+                lemonadeState = DRINK
             }
         }
         else if(lemonadeState.equals(this.DRINK)) {
-            this.lemonadeState = this.RESTART
-            this.lemonSize = -1
+            lemonadeState = RESTART
+            lemonSize = -1
         }
-        else if(lemonadeState.equals(this.RESTART)) {
-            this.lemonadeState = this.SELECT
+        else if(lemonadeState.equals(RESTART)) {
+            lemonadeState = SELECT
         }
     }
 
@@ -149,21 +149,21 @@ class MainActivity : AppCompatActivity() {
         //  drawable from the drawable resources. The drawables have the same names as the strings
         //  but remember that they are drawables, not strings.
 
-        if(lemonadeState.equals(this.SELECT)) {
+        if(lemonadeState.equals(SELECT)) {
             textAction.text = getString(R.string.lemon_select)
-            this.lemonImage?.setImageResource(R.drawable.lemon_tree)
+            lemonImage?.setImageResource(R.drawable.lemon_tree)
         }
-        else if(lemonadeState.equals(this.SQUEEZE)) {
+        else if(lemonadeState.equals(SQUEEZE)) {
             textAction.text = getString(R.string.lemon_squeeze)
-            this.lemonImage?.setImageResource(R.drawable.lemon_squeeze)
+            lemonImage?.setImageResource(R.drawable.lemon_squeeze)
         }
-        else if(lemonadeState.equals(this.DRINK)) {
+        else if(lemonadeState.equals(DRINK)) {
             textAction.text = getString(R.string.lemon_drink)
-            this.lemonImage?.setImageResource(R.drawable.lemon_drink)
+            lemonImage?.setImageResource(R.drawable.lemon_drink)
         }
-        else if(lemonadeState.equals(this.RESTART)) {
+        else if(lemonadeState.equals(RESTART)) {
             textAction.text = getString(R.string.lemon_empty_glass)
-            this.lemonImage?.setImageResource(R.drawable.lemon_restart)
+            lemonImage?.setImageResource(R.drawable.lemon_restart)
         }
     }
 
